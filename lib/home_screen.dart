@@ -31,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         context,
       ).showSnackBar(
           SnackBar(
+              backgroundColor: Colors.red,
               content: Text("Invalid Weight")
           )
       );
@@ -46,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         context,
       ).showSnackBar(
           SnackBar(
+              backgroundColor: Colors.red,
               content: Text("Invalid Weight")
           )
       );
@@ -61,6 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
         context,
       ).showSnackBar(
           SnackBar(
+              backgroundColor: Colors.red,
               content: Text("Invalid Meter Height")
           )
       );
@@ -76,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
         context,
       ).showSnackBar(
           SnackBar(
+              backgroundColor: Colors.red,
               content: Text("Invalid CM Height")
           )
       );
@@ -92,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
         context,
       ).showSnackBar(
           SnackBar(
+              backgroundColor: Colors.red,
               content: Text("Invalid Feet Height")
           )
       );
@@ -102,6 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
         context,
       ).showSnackBar(
           SnackBar(
+              backgroundColor: Colors.red,
               content: Text("Invalid Inch Height")
           )
       );
@@ -114,6 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
         context,
       ).showSnackBar(
           SnackBar(
+              backgroundColor: Colors.red,
               content: Text("Invalid Height")
           )
       );
@@ -163,7 +170,12 @@ class _HomeScreenState extends State<HomeScreen> {
     if (weight == null) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text("Invalid Weight")));
+      ).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.red,
+            content: Text("Invalid Weight")
+          )
+      );
       return;
     }
 
@@ -174,7 +186,10 @@ class _HomeScreenState extends State<HomeScreen> {
       if (height == null) {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(SnackBar(content: Text("Invalid Height")));
+        ).showSnackBar(SnackBar(
+            backgroundColor: Colors.red,
+            content: Text("Invalid Height")
+        ));
         return;
       }
     }else if (heightType == HeightType.cm) {
@@ -182,7 +197,10 @@ class _HomeScreenState extends State<HomeScreen> {
       if (height == null) {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(SnackBar(content: Text("Invalid Height")));
+        ).showSnackBar(SnackBar(
+            backgroundColor: Colors.red,
+            content: Text("Invalid Height")
+        ));
         return;
       }
     }else if(heightType == HeightType.feetInch) {
@@ -190,14 +208,20 @@ class _HomeScreenState extends State<HomeScreen> {
       if (height == null) {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(SnackBar(content: Text("Invalid Height")));
+        ).showSnackBar(SnackBar(
+            backgroundColor: Colors.red,
+            content: Text("Invalid Height")
+        ));
         return;
       }
     }
     else{
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(SnackBar(content: Text("Invalid Height")));
+        ).showSnackBar(SnackBar(
+            backgroundColor: Colors.red,
+            content: Text("Invalid Height")
+        ));
         return;
     }
 
