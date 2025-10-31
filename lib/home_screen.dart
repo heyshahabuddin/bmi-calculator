@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String _bmiResult = '';
   String? _bmiCategory;
   Color? _bmiCategoryColor;
+  String? _bmiCategoryBadge;
 
   // Weight for KG
   double? kgWeight(){
@@ -141,7 +142,19 @@ class _HomeScreenState extends State<HomeScreen> {
       case "Overweight":
         return Colors.orange;
       default:
-        return Colors.grey;
+        return Colors.red;
+    }
+  }
+  String bmiCategoryBadge(String category) {
+    switch (category) {
+      case "Underweight":
+        return 'underweight.png';
+      case "Normal":
+        return 'normal.png';
+      case "Overweight":
+        return 'overweight.png';
+      default:
+        return 'obese.png';
     }
   }
   void _calculateBMI(){
@@ -191,11 +204,13 @@ class _HomeScreenState extends State<HomeScreen> {
     final bmi = weight/(height * height);
     final category = bmiCategory(bmi);
     final categoryColor = bmiCategoryColor(category);
+    final categoryBadge = bmiCategoryBadge(category);
 
     setState(() {
       _bmiResult = bmi.toStringAsFixed(2);
       _bmiCategory = category;
       _bmiCategoryColor = categoryColor;
+      _bmiCategoryBadge = categoryBadge;
     });
   }
 
@@ -416,22 +431,30 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          Text(
-            "Result: $_bmiResult",
-            style: TextStyle(
-              //color: Color(0xFFFFFFFF),
-              fontSize: 25,
-              fontWeight: FontWeight.w700,
+          if (_bmiResult != '')...[
+            Text(
+              "Result: $_bmiResult",
+              style: TextStyle(
+                //color: Color(0xFFFFFFFF),
+                fontSize: 25,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-          Text(
-            "Category: $_bmiCategory",
-            style: TextStyle(
-              color: _bmiCategoryColor ?? Colors.grey,
-              fontSize: 25,
-              fontWeight: FontWeight.w700,
+            Text(
+              "Category: $_bmiCategory",
+              style: TextStyle(
+                color: _bmiCategoryColor ?? Colors.grey,
+                fontSize: 25,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
+            if (_bmiResult != '')...[
+              Container(
+                child: Image.asset('assets/images/$_bmiCategoryBadge'),
+              ),
+            ]
+          ],
+
         ],
       ),
     );
