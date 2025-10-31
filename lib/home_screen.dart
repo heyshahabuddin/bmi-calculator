@@ -446,7 +446,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: ElevatedButton.styleFrom(backgroundColor: Color(0xFF6B55CB)),
             onPressed: _calculateBMI,
             child: Text(
-              "Show Result",
+              "Check Your BMI",
               style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontWeight: FontWeight.w700,
@@ -456,22 +456,50 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 16),
           if (_bmiResult != '')...[
-            Text(
-              "Result: $_bmiResult",
-              style: TextStyle(
-                //color: Color(0xFFFFFFFF),
-                fontSize: 25,
-                fontWeight: FontWeight.w700,
+            Container(
+              padding: EdgeInsets.all(16),
+              //height: 300,
+              //width: 300,
+              decoration: BoxDecoration(
+                color: _bmiCategoryColor ?? Colors.grey,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    "Your BMI:",
+                    style: TextStyle(
+                      color: Color(0xFFFFFFFF),
+                      fontSize: 25,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Text(
+                    _bmiResult,
+                    style: TextStyle(
+                      color: Color(0xFFFFFFFF),
+                      fontSize: 25,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Text('$_bmiCategory',
+                    style: TextStyle(
+                      color: Color(0xFFFFFFFF),
+                      fontSize: 25,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+              ]
               ),
             ),
-            Text(
+            /*Text(
               "Category: $_bmiCategory",
               style: TextStyle(
                 color: _bmiCategoryColor ?? Colors.grey,
                 fontSize: 25,
                 fontWeight: FontWeight.w700,
               ),
-            ),
+            ),*/
             if (_bmiResult != '')...[
               Container(
                 child: Image.asset('assets/images/$_bmiCategoryBadge'),
